@@ -1,0 +1,21 @@
+{% extends "DashboardApp/base.html" %} {% block form %}
+
+<div class="jumbotron" height="100%"  >
+  {% load crispy_forms_tags %}
+  <form
+    method="post"
+    
+    class="jumbotron text-dark"
+  >
+
+    <h2 style="text-align: center" ><b>Loan Required</b></h2>
+    {% csrf_token %} 
+    {{ form|crispy }}
+    <input
+      type="submit"
+      class="btn btn-primary  mt-3"
+      style="margin-left: 45%; border-radius: 12px"
+    />
+  </form>
+</div>
+{% endblock form %}

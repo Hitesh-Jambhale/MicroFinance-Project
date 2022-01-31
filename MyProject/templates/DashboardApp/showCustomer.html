@@ -1,0 +1,37 @@
+{% extends 'DashboardApp/base.html' %}
+{% block form %}
+
+
+<div class="jumbotron">
+<br>
+<h2 style="text-align:center"><b>Show Customer Details</b></h2><br>
+<table class="table table-striped" border="3">
+  <tr >
+    <th>Full Name</th>
+    <th>Guardian name</th>
+    <th>Gender</th>
+    <th>Mobile Number</th>
+    <th>Email</th>
+    <th>Pan No</th>
+    <th>DOB</th>
+    <th>Details</th>
+
+  </tr>
+  {% for cus in customer %}
+  <tr>
+    <td>{{cus.full_name}}</td>
+    <td>{{cus.guardian_name}}</td>
+    <td>{{cus.gender}}</td>
+    <td>{{cus.mobile}}</td>
+    <td>{{cus.email}}</td>
+    <td>{{cus.pan_no}}</td>
+    <td>{{cus.dob}}</td>
+    <td><a href="{% url 'show_address' cus.id %}"><button class="btn btn-primary " style="margin-right: auto; border-radius: 12px">Show</button></a></td>
+
+
+   </tr>
+  {% endfor %}
+</table>
+</div>
+
+{% endblock form %}

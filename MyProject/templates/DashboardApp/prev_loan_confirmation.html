@@ -1,0 +1,23 @@
+{% extends "DashboardApp/base.html" %} {% block form %}
+<div class="jumbotron"  style="margin-top: 15%; height:100%">
+    
+    <div class="card-group">
+        <div class="card bg-light">
+          <div class="card-body text-center">
+            
+            <form style="margin:auto;width:50%">
+                <h2 style="text-align: center" class="mt-2 text-dark"><b>Do you have any Previous Loan ?</b></h2><br>
+                <div style="text-align: center;">
+                <button class="btn btn-primary" style="border-radius: 12px" type="submit" formaction="{% url 'cPrevLoanpg' customer.id %}">Yes</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <button class="btn btn-primary" style="border-radius: 12px"  type="submit" formaction="{% url 'addguarantor' customer.id %}">No</button>           
+            </div>    
+            </form>
+          </div>
+        </div>
+    </div> 
+               
+        
+</div>
+{% endblock form %}
+

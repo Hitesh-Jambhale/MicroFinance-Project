@@ -1,0 +1,42 @@
+{% extends "DashboardApp/base.html" %} {% block form %}
+<div>
+  {% load crispy_forms_tags %}
+  <form
+    method="post"
+    class="jumbotron text-dark"
+  >
+    <br /><br />
+    <h2 style="text-align: center" class="mt-2 "><b>Previous Loan Details</b></h2>
+    {% csrf_token %}
+
+    <div class="row mt-3">
+      <div class="col-6 "> {{ form.customer|as_crispy_field }}</div>
+      <div class="col-6">{{ form.bank_name|as_crispy_field }}</div>
+      <div class="col-6">{{ form.branch_name|as_crispy_field }}</div>
+      <div class="col-6">{{ form.account_no|as_crispy_field }}</div>
+      <div class="col-6">{{ form.ifsc_code|as_crispy_field }}</div>
+      <div class="col-6">{{ form.micr_code|as_crispy_field }}</div>
+      <div class="col-6">{{ form.loan_amount|as_crispy_field }}</div>
+      <div class="col-6">{{ form.loan_type|as_crispy_field }}</div>
+      <div class="col-6">{{ form.loan_tenure|as_crispy_field }}</div>
+      <div class="col-6">{{ form.amount_paid|as_crispy_field }}</div>
+
+    </div>
+    <!-- {{form|crispy}} -->
+    <input 
+      type="submit"
+      value="Submit and Next"
+      
+      class="btn btn-primary  mt-3"
+      style="margin-left: 35%; border-radius: 12px"
+      
+    />&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="add" name="add"
+      type="submit"
+      value="Add more Detail"
+      class="btn btn-primary  mt-3"
+      style="margin-right: auto; border-radius: 12px"
+    />
+  </form>
+</div>
+{% endblock form %}

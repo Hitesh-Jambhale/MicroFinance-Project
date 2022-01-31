@@ -1,0 +1,64 @@
+{% extends 'DashboardApp/base.html' %}
+{% load static %}
+{% block form %}
+<div class="jumbotron" style="overflow-x:auto; background-color: white;">
+    <h2 style="text-align:center"><b>Loan Enquiry</b></h2>
+    <table class="table table-striped "  border=3px solid>
+        <tr >
+            <th>CID</th>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Mobile No</th>
+            <th>Email</th>
+            <th>Pan No</th>
+            <th>Required Amount</th>
+            <th>Cibil Score</th>
+            <th>Eligibility</th>
+            
+            
+            {% if user.status == 'OPERATION HEAD' %}
+            <th>Update</th>
+            {% else %}
+            <th>Delete</th>
+            <th>Register </th>
+            {% endif %}
+
+
+        </tr>
+        {% for customer in customer_list %}
+            <tr >
+                <td>{{customer.id}}</td>
+                <td>{{customer.full_name}}</td>
+                <td>{{customer.gender}}</td>
+                <td>{{customer.dob}}</td>
+                <td>{{customer.mobile}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.pan_number}}</td>
+                <td>{{customer.required_loan}}</td>
+                <td>{{customer.cibil_score}}</td>
+                {% if customer.is_eligible %}
+                    <td>Eligible</td>
+                {% else %}
+                    <td>Pending</td>
+                {% endif %}
+                
+                
+                {% if user.status == 'OPERATION HEAD' %}
+                <td><a href="{% url 'approve' customer.id %}"><button class="btn btn-outline-primary"style="border-radius: 12px;">Approve</button></a></td>
+                {% else %}
+                {% if customer.is_eligible %}
+                <td><button class="btn btn-danger" style="border-radius: 12px;" disabled>Delete</button></td>
+                <td><a href="{% url 'cCustomerpg' %}"><button class="btn btn-primary"style="border-radius: 12px;">Register</button></a></td>
+                {% else %}
+                <td><a href="{% url 'delete' customer.id %}"><button class="btn btn-danger" style="border-radius: 12px;">Delete</button></a></td>
+                <td><button class="btn btn-primary" style="border-radius: 12px;" disabled>Register</button></td>
+                {% endif %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock form %}

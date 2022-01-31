@@ -1,0 +1,32 @@
+
+{% extends 'DashboardApp\base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+
+
+{% block form %}
+
+
+
+<div class="container"><br>
+
+    <form method="post" class="jumbotron">
+    {% csrf_token %}
+        <h2 style="text-align: center;"><b>Self-Employed Details </b></h2>
+    {{form | crispy}}
+    <input
+    type="submit"
+    value="Submit and Next"
+    class="btn btn-primary  mt-3"
+        style="margin-left: 45%; border-radius:12px">
+    
+    </form>
+    
+
+</div>
+
+
+
+{% endblock %}

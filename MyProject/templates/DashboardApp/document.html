@@ -1,0 +1,37 @@
+{% extends "DashboardApp/base.html" %} {% block form %}
+<div>
+  {% load crispy_forms_tags %}
+  <form
+    method="post"
+   
+    class="jumbotron text-dark"
+    enctype="multipart/form-data"
+  >
+    <br />
+    <h2 style="text-align: center" class="mt-2 text-dark"><b>Upload Documents </b></h2>
+    {% csrf_token %}
+    <div class="col-6">{{ form.customer|as_crispy_field }}</div>
+
+    <div class="row mt-3">
+     
+      <div class="col-6">{{ form.pan_card|as_crispy_field }}</div>
+      <div class="col-6">{{ form.aadhar_card|as_crispy_field }}</div>
+      <div class="col-6">{{ form.bank_statment|as_crispy_field }}</div>
+      <div class="col-6">{{ form.photo|as_crispy_field }}</div>
+      <div class="col-6">{{ form.signature|as_crispy_field }}</div>
+      <div class="col-6">{{ form.salary_slip|as_crispy_field }}</div>
+      <div class="col-6">{{ form.from16|as_crispy_field }}</div>
+      <div class="col-6">{{ form.blance_sheet|as_crispy_field }}</div>
+      <div class="col-6">{{ form.itr|as_crispy_field }}</div>
+      <div class="col-6">{{ form.business_proof|as_crispy_field }}</div>
+    </div>
+    <!-- {{form|crispy}} -->
+    <input
+      type="submit"
+      value="Upload & Submit"
+      class="btn btn-primary  mt-3"
+      style="margin-left: 35%; border-radius: 12px"
+    />
+  </form>
+</div>
+{% endblock form %}
